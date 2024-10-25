@@ -23,5 +23,10 @@ int main() {
     printf("Escolha uma opção: ");
     scanf("%d", &opcao);
 
-return 0;
+    switch(decisao) {
+    case 1:
+    // adicionarItem(); Adicionandc itens caso tiver uma venda por exemplo..
+    break;
+    }
+    return 0;
 }
