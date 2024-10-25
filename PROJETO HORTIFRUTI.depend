@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1729894215 source:c:\users\família\desktop\projeto horti\projeto hortifruti\projeto.c
+1729894310 source:c:\users\família\desktop\projeto horti\projeto hortifruti\projeto.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<locale.h>
 

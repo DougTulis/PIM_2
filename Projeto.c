@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 typedef struct {  /// ERstrutura homogenea que irá representar o item do estoque.
     char nome[50];
@@ -14,7 +15,7 @@ void listarItens();
 
 int main() {
     int opcao;
-
+    setlocale(LC_ALL, "Portuguese"); //Settando o locale para portugues brasileiro.
     printf("====MENU DO ESTOQUE======\n"); // APÓS O USUÁRIO ESCOLHER O COMANDO DE ESTOQUE NO MENU PRINCIPAL, VAI CAIR NESSE SUBMENU AQUI.
     printf("1. Adicionar Item\n");
     printf("2. Remover Item\n");
