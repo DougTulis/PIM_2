@@ -9,6 +9,9 @@ typedef struct {  /// ERstrutura homogenea que irá representar o item do estoque
     float preco;
 } ItemEstoque;
 
+void adicionarItem(); /// Funcoes de adiciona, remover, listar esses items mas eu vouimplementar dps.
+void removerItem();
+void listarItens();
 
 return 0;
 }
