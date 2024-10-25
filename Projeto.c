@@ -3,7 +3,7 @@
 #include <string.h>
 #include <locale.h>
 
-typedef struct {  /// ERstrutura homogenea que irá representar o item do estoque.
+typedef struct {  /// ERstrutura heterogenea que irá representar o item do estoque.
     char nome[50];
     int quantidade;
     float preco;
@@ -38,4 +38,8 @@ int main() {
         printf("Opção invalida... tente novamente!");
     }
     return 0;
+}
+
+void listarItens() { // CRIANDO A FUNÇÃO LISTAR ITEM!
+
 }
