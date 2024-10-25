@@ -25,8 +25,10 @@ int main() {
 
     switch(decisao) {
     case 1:
-    // adicionarItem(); Adicionandc itens caso tiver uma venda por exemplo..
+    // adicionarItem(); Adicionandc itens caso tiver uma compra por exemplo..
     break;
     }
+    case 2:
+    // removerEstoque(); Removendo itens do estoque caso haja uma venda imputada ,no caso
     return 0;
 }
