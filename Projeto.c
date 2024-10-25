@@ -27,8 +27,11 @@ int main() {
     case 1:
     // adicionarItem(); Adicionandc itens caso tiver uma compra por exemplo..
     break;
-    }
     case 2:
     // removerEstoque(); Removendo itens do estoque caso haja uma venda imputada ,no caso
+    break;
+    case 3:
+    // listarItem(); Chamando a função listar Items para consultar todos os items disponiveis no meu estoque
+
     return 0;
 }
