@@ -1,9 +1,14 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main () {
-    setlocale(LC_ALL, "Portuguese");
-printf("O heitor é binarie.");
+int main() {
+typedef struct {  /// ERstrutura homogenea que irá representar o item do estoque.
+    char nome[50];
+    int quantidade;
+    float preco;
+} ItemEstoque;
+
+
 return 0;
 }
