@@ -41,5 +41,10 @@ int main() {
 }
 
 void listarItens() { // CRIANDO A FUNÇÃO LISTAR ITEM!
-
+FILE *arquivo; // criando  um ponteiro do Tipo File.
+arquivo = fopen("C:\\Users\\Familia\\\PROJETO HORTI\\PROJETO HORTIFRUTI\\PRODUTOS.txt","r"); // LENDO OS PRODUTOS CRIADOS NA ABA PRODUTOS (VINICIUS)
+if (arquivo == NULL) {
+        printf("Não existe nenhum produto cadastrado no sistema, tente novamente."); // se for nulo ele nem vai prosseguir
+    return;
+}
 }
