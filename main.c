@@ -14,8 +14,8 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
 produto produtos[100];
 int totalProdutos = 0;
 
-void carregarProdutos( const char *caminhoDiretorio);
-void salvarProdutosComEstoque( const char *caminhoDiretorio);
+void carregarProdutos();
+ void salvarProdutosComEstoque();
 void adicionarItem();
 void removerItem();
 void listarItens();
@@ -23,7 +23,6 @@ void listarItens();
 
 
 int main() {
-
     int opcao;
     setlocale(LC_ALL, NULL);
     printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
@@ -42,7 +41,7 @@ int main() {
         // removerItem(); (em manutenção..)
         break;
     case 3:
-//        listarItens();
+        carregarProdutos();
         break;
     case 0:
         printf("Saindo do programa...\n");
@@ -77,7 +76,7 @@ int main() {
     fclose(arquivo);
 }*/
 
-carregarProdutos() {
+void carregarProdutos() {
     totalProdutos = 0; // o total do array precisa começa com 0
     FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo
     if (arquivo == NULL) {
@@ -90,6 +89,10 @@ carregarProdutos() {
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
         produtos[totalProdutos].qtd = 0; // aqui vai começar com 0;
+        printf("%s\n", produtos[totalProdutos].nomeProduto);
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
+
     }
+
+    fclose(arquivo);
 }
