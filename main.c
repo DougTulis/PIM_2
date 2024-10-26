@@ -17,7 +17,7 @@ void removerItem();
 
 
 int main() {
- int opcao;
+    int opcao;
     do {
         printf("\n=== Menu de Estoque ===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
@@ -28,20 +28,20 @@ int main() {
         scanf("%d", &opcao);
 
         switch(opcao) {
-            case 1:
-                // adicionarItem(); (em manutenção..)
-                break;
-            case 2:
-                // removerItem(); (em manutenção..)
-                break;
-            case 3:
-                listarItens();
-                break;
-            case 0:
-                printf("Saindo do programa...\n");
-                break;
-            default:
-                printf("Opção inválida! Tente novamente.\n");
+        case 1:
+            // adicionarItem(); (em manutenção..)
+            break;
+        case 2:
+            // removerItem(); (em manutenção..)
+            break;
+        case 3:
+            listarItens();
+            break;
+        case 0:
+            printf("Saindo do programa...\n");
+            break;
+        default:
+            printf("Opção inválida! Tente novamente.\n");
         }
     } while(opcao != 0);
 
@@ -50,6 +50,10 @@ int main() {
 
 
 void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius...
-FILE *arquivo;
-arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
+    FILE *arquivo;
+    arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
+    if (arquivo == NULL) {
+        printf("erro ao abrir o arquivo de estoque ou arquivo não existe.\n"); // Progrmaação defensiva
+        exit(0);
+    }
 }
