@@ -98,6 +98,13 @@ void carregarProdutos() {
     fclose(arquivo);
 }
 
-void salvarProdutosVinculadoComEstoque {
+void salvarProdutosVinculadoComEstoque() {
+    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "w"); // PARA ESCRITA
+    if (arquivo == NULL) {
+        printf("Arquivo não existe."); // programação defensiva...
+        exit(1);
+    }
 
-}
+    for (int i = 0; i <totalProdutos; i++ ) { // aqui sera um laço for pra tipo percorrer todos os structs de produtos e assim escreve-los na nova txt
+
+    }
