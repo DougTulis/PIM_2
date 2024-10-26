@@ -13,7 +13,7 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
 } produto;
 produto prod;
 void carregarProdutos( const char *caminhoDiretorio);
-void salvarProdutos( const char *caminhoDiretorio);
+void salvarProdutosComEstoque( const char *caminhoDiretorio);
 void adicionarItem();
 void removerItem();
 void listarItens();
@@ -74,7 +74,9 @@ void listarItens() { /// leitura dos produtos existentes, retornando praticament
     fclose(arquivo);
 }
 
-adicionarItem() {
-    system("cls");
+carregarProdutos() {
+    FILE *file = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
+
+
 
 }
