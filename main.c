@@ -9,9 +9,11 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     float precoUnidade;
     float desconto;
     float valorFinal;
-    char nomeProduto[100];
+    char nomeProduto[50];
 } produto;
-produto produtos[100];
+#define MAX_PRODUTOS 999
+produto produtos[MAX_PRODUTOS];
+
 int totalProdutos = 0;
 
 void carregarProdutos();
@@ -88,11 +90,8 @@ void carregarProdutos() {
                  &produtos[totalProdutos].precoUnidade,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
-        produtos[totalProdutos].qtd = 0; // aqui vai começar com 0;
-        printf("%s\n", produtos[totalProdutos].nomeProduto);
+        produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
-
     }
-
     fclose(arquivo);
 }
