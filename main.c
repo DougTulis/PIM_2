@@ -13,7 +13,7 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
 
 void adicionarItem();
 void removerItem();
-void listarItens();
+/// void listarItens();
 
 
 int main() {
@@ -46,4 +46,9 @@ int main() {
     } while(opcao != 0);
 
     return 0;
+}
+
+
+void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius...
+
 }
