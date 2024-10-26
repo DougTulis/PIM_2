@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-
+#include <stdbool.h>
 
 typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     int id;
@@ -39,7 +39,7 @@ int main() {
 
     switch(opcao) {
     case 1:
-        //adicionarItem();
+        adicionarItemEstoque();
         break;
     case 2:
         // removerItem(); (em manutenção..)
@@ -92,7 +92,7 @@ void carregarProdutos() {
                  &produtos[totalProdutos].precoUnidade,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
-        printf("Nome: %s\n", produtos[totalProdutos].nomeProduto);
+        printf("ID: %s\n", produtos[totalProdutos].nomeProduto);
         produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
@@ -118,14 +118,20 @@ void salvarProdutosVinculadoComEstoque() {
 }
 
 void adicionarItemEstoque() {
-    boolean idExiste = false;
+    carregarProdutos();
+    bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
     int id, quantidade; // declarando o id e quantidade que do produto em questao...
     printf("Insira o ID do produto: ");
     scanf("%d", &id);
-    for (int i = 0; i < totalProdutos; i++) {
-        if (produtos[i].id == ID) {
+    for (int i = 0; i <totalProdutos; i++) {
+        if (produtos[i].id == id) {
             idExiste = true;
+            printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
+            printf("Digite a quantidade de estoque do produto: %d", produtos[i].qtd);
+            break;
         }
     }
-
+    if (!idExiste) {
+        printf("Produto com ID %d não encontrado.\n", id);
+        }
 }

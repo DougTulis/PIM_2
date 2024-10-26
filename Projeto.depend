@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1729978042 source:e:\linguagem_c\projeto pim 2\projeto\main.c
+1729981930 source:e:\linguagem_c\projeto pim 2\projeto\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
+	<stdbool.h>
 
