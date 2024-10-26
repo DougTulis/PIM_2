@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
+
 
 typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     int id;
@@ -17,8 +19,10 @@ void removerItem();
 
 
 int main() {
+
     int opcao;
-        printf("\n=== Menu de Estoque ===\n"); // submenu do estoque...
+ setlocale(LC_ALL, NULL);
+        printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
         printf("2. Remover Item\n");
         printf("3. Listar Itens\n");
@@ -48,9 +52,8 @@ int main() {
 
 
 void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius
-
     FILE *arquivo;
-    int resultado = arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
+     arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
     if (arquivo == NULL) {
         printf("erro ao abrir o arquivo de estoque ou arquivo não existe.\n"); // Progrmaação defensiva
         exit(0);
@@ -59,7 +62,6 @@ void listarItens() { /// leitura dos produtos existentes, retornando praticament
 
     while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &prod.id, prod.nomeProduto, &prod.qtd, &prod.precoUnidade, &prod.desconto, &prod.valorFinal) == 6) {
 
-   printf("Leitura feita com sucesso....\n");
         printf("ID: %d\n", prod.id);
         printf("Nome: %s\n", prod.nomeProduto);
         printf("Quantidade: %d\n", prod.qtd);
