@@ -64,7 +64,7 @@ void listarItens() { /// leitura dos produtos existentes, retornando praticament
 
         printf("ID: %d\n", prod.id);
         printf("Nome: %s\n", prod.nomeProduto);
-        printf("Quantidade: %d\n", prod.qtd);
+        printf("Quantidade atual do estoque: %d\n", prod.qtd);
         printf("Preço Unidade: %.2f\n", prod.precoUnidade);
         printf("Desconto: %.2f\n", prod.desconto);
         printf("Valor Final: %.2f\n", prod.valorFinal);
