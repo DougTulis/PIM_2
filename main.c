@@ -10,6 +10,12 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     char nomeProduto[100];
 } produto;
 
+
+void adicionarItem();
+void removerItem();
+void listarItens();
+
+
 int main()
 {
     printf("Hello world!\n");
