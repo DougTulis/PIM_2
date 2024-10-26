@@ -92,6 +92,7 @@ void carregarProdutos() {
                  &produtos[totalProdutos].precoUnidade,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
+                printf("Nome: %s\n", produtos[totalProdutos].nomeProduto);
         produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
@@ -99,12 +100,18 @@ void carregarProdutos() {
 }
 
 void salvarProdutosVinculadoComEstoque() {
-    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "w"); // PARA ESCRITA
+    FILE *arquivo = fopen("E:\Linguagem_C\Projeto PIM 2\Projeto\bin\Debug\ProdutoEstoque.txt", "w"); // PARA ESCRITA
     if (arquivo == NULL) {
         printf("Arquivo não existe."); // programação defensiva...
         exit(1);
     }
 
     for (int i = 0; i <totalProdutos; i++ ) { // aqui sera um laço for pra tipo percorrer todos os structs de produtos e assim escreve-los na nova txt
-
+    sprintf("ID do produto: %d\n Produto: %s\n Preço por unidade: %.2f\n Desconto aplicado: %.2f\n Valor Final: %.2f",produtos[i].id,
+                produtos[i].nomeProduto,
+                produtos[i].precoUnidade,
+                produtos[i].desconto,
+                produtos[i].valorFinal,
+                produtos[i].qtd);
     }
+}
