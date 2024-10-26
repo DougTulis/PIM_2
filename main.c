@@ -18,7 +18,6 @@ void removerItem();
 
 int main() {
     int opcao;
-    do {
         printf("\n=== Menu de Estoque ===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
         printf("2. Remover Item\n");
@@ -43,17 +42,31 @@ int main() {
         default:
             printf("Opção inválida! Tente novamente.\n");
         }
-    } while(opcao != 0);
 
     return 0;
 }
 
 
-void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius...
+void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius
+
     FILE *arquivo;
-    arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
+    int resultado = arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
     if (arquivo == NULL) {
         printf("erro ao abrir o arquivo de estoque ou arquivo não existe.\n"); // Progrmaação defensiva
         exit(0);
     }
+    produto prod;
+
+    while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &prod.id, prod.nomeProduto, &prod.qtd, &prod.precoUnidade, &prod.desconto, &prod.valorFinal) == 6) {
+
+   printf("Leitura feita com sucesso....\n");
+        printf("ID: %d\n", prod.id);
+        printf("Nome: %s\n", prod.nomeProduto);
+        printf("Quantidade: %d\n", prod.qtd);
+        printf("Preço Unidade: %.2f\n", prod.precoUnidade);
+        printf("Desconto: %.2f\n", prod.desconto);
+        printf("Valor Final: %.2f\n", prod.valorFinal);
+        printf("------------------------\n");
+    }
+      fclose(arquivo);
 }
