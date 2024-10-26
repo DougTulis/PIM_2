@@ -75,8 +75,14 @@ void listarItens() { /// leitura dos produtos existentes, retornando praticament
 }
 
 carregarProdutos() {
-    FILE *file = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
-
+    FILE *file = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo
+    if (file == NULL) {
+        printf("Arquivo não existe."); // programação defensiva...
+        exit(1);
+    }
+    while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &prod.id,
+                  prod.nomeProduto, &prod.qtd, &prod.precoUnidade,
+                   &prod.desconto, &prod.valorFinal) == 6) {
 
 
 }
