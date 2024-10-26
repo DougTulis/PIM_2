@@ -11,13 +11,15 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     float valorFinal;
     char nomeProduto[50];
 } produto;
+
+
 #define MAX_PRODUTOS 999
 produto produtos[MAX_PRODUTOS];
 
 int totalProdutos = 0;
 
 void carregarProdutos();
- void salvarProdutosComEstoque();
+void salvarProdutosVinculadoComEstoque();
 void adicionarItem();
 void removerItem();
 void listarItens();
@@ -94,4 +96,8 @@ void carregarProdutos() {
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
+}
+
+void salvarProdutosVinculadoComEstoque {
+
 }
