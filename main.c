@@ -11,41 +11,42 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     float valorFinal;
     char nomeProduto[100];
 } produto;
-
-
+produto prod;
+void carregarProdutos( const char *caminhoDiretorio);
+void salvarProdutos( const char *caminhoDiretorio);
 void adicionarItem();
 void removerItem();
-/// void listarItens();
+void listarItens();
 
 
 int main() {
 
     int opcao;
- setlocale(LC_ALL, NULL);
-        printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
-        printf("1. Adicionar Item\n");
-        printf("2. Remover Item\n");
-        printf("3. Listar Itens\n");
-        printf("0. Sair\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+    setlocale(LC_ALL, NULL);
+    printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
+    printf("1. Adicionar Item\n");
+    printf("2. Remover Item\n");
+    printf("3. Listar Itens\n");
+    printf("0. Sair\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &opcao);
 
-        switch(opcao) {
-        case 1:
-            // adicionarItem(); (em manutenção..)
-            break;
-        case 2:
-            // removerItem(); (em manutenção..)
-            break;
-        case 3:
-            listarItens();
-            break;
-        case 0:
-            printf("Saindo do programa...\n");
-            break;
-        default:
-            printf("Opção inválida! Tente novamente.\n");
-        }
+    switch(opcao) {
+    case 1:
+         adicionarItem();
+        break;
+    case 2:
+        // removerItem(); (em manutenção..)
+        break;
+    case 3:
+        listarItens();
+        break;
+    case 0:
+        printf("Saindo do programa...\n");
+        break;
+    default:
+        printf("Opção inválida! Tente novamente.\n");
+    }
 
     return 0;
 }
@@ -53,12 +54,12 @@ int main() {
 
 void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius
     FILE *arquivo;
-     arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
+    arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
     if (arquivo == NULL) {
         printf("erro ao abrir o arquivo de estoque ou arquivo não existe.\n"); // Progrmaação defensiva
         exit(0);
     }
-    produto prod;
+
 
     while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &prod.id, prod.nomeProduto, &prod.qtd, &prod.precoUnidade, &prod.desconto, &prod.valorFinal) == 6) {
 
@@ -70,9 +71,10 @@ void listarItens() { /// leitura dos produtos existentes, retornando praticament
         printf("Valor Final: %.2f\n", prod.valorFinal);
         printf("------------------------\n");
     }
-      fclose(arquivo);
+    fclose(arquivo);
 }
 
 adicionarItem() {
+    system("cls");
 
 }
