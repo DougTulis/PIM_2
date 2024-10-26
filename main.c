@@ -11,12 +11,15 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     float valorFinal;
     char nomeProduto[100];
 } produto;
-produto prod;
+produto produtos[100];
+int totalProdutos = 0;
+
 void carregarProdutos( const char *caminhoDiretorio);
 void salvarProdutosComEstoque( const char *caminhoDiretorio);
 void adicionarItem();
 void removerItem();
 void listarItens();
+
 
 
 int main() {
@@ -52,7 +55,7 @@ int main() {
 }
 
 
-void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius
+/* void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius
     FILE *arquivo;
     arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
     if (arquivo == NULL) {
@@ -72,17 +75,20 @@ void listarItens() { /// leitura dos produtos existentes, retornando praticament
         printf("------------------------\n");
     }
     fclose(arquivo);
-}
+}*/
 
 carregarProdutos() {
+    totalProdutos = 0; // o total do array precisa começa com 0
     FILE *file = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo
     if (file == NULL) {
         printf("Arquivo não existe."); // programação defensiva...
         exit(1);
     }
-    while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &prod.id,
-                  prod.nomeProduto, &prod.qtd, &prod.precoUnidade,
-                   &prod.desconto, &prod.valorFinal) == 6) {
-
-
+    while(fscanf(arquivo, "%d,%99[^,],%f,%f,%f", &produtos[totalProdutos].id,
+              produtos[totalProdutos].nomeProduto,
+              &produtos[totalProdutos].precoUnidade,
+              &produtos[totalProdutos].desconto,
+              &produtos[totalProdutos].valorFinal)) == 5) {
+                prod.qtd = 0; // aqui vai começar com 0;
+                totalProdutos = totalProdutos + 1; // contador de produtos.
 }
