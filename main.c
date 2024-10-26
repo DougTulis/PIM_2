@@ -72,3 +72,7 @@ void listarItens() { /// leitura dos produtos existentes, retornando praticament
     }
       fclose(arquivo);
 }
+
+adicionarItem() {
+
+}
