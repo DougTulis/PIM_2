@@ -36,13 +36,13 @@ int main() {
 
     switch(opcao) {
     case 1:
-         adicionarItem();
+        //adicionarItem();
         break;
     case 2:
         // removerItem(); (em manutenção..)
         break;
     case 3:
-        listarItens();
+//        listarItens();
         break;
     case 0:
         printf("Saindo do programa...\n");
@@ -79,16 +79,17 @@ int main() {
 
 carregarProdutos() {
     totalProdutos = 0; // o total do array precisa começa com 0
-    FILE *file = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo
-    if (file == NULL) {
+    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo
+    if (arquivo == NULL) {
         printf("Arquivo não existe."); // programação defensiva...
         exit(1);
     }
     while(fscanf(arquivo, "%d,%99[^,],%f,%f,%f", &produtos[totalProdutos].id,
-              produtos[totalProdutos].nomeProduto,
-              &produtos[totalProdutos].precoUnidade,
-              &produtos[totalProdutos].desconto,
-              &produtos[totalProdutos].valorFinal)) == 5) {
-                prod.qtd = 0; // aqui vai começar com 0;
-                totalProdutos = totalProdutos + 1; // contador de produtos.
+                 produtos[totalProdutos].nomeProduto,
+                 &produtos[totalProdutos].precoUnidade,
+                 &produtos[totalProdutos].desconto,
+                 &produtos[totalProdutos].valorFinal) == 5) {
+        produtos[totalProdutos].qtd = 0; // aqui vai começar com 0;
+        totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
+    }
 }
