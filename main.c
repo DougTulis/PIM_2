@@ -50,5 +50,6 @@ int main() {
 
 
 void listarItens() { /// leitura dos produtos existentes, retornando praticamente o struct criado pelo vinicius...
-
+FILE *arquivo;
+arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r");
 }
