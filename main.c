@@ -20,8 +20,8 @@ int totalProdutos = 0;
 
 void carregarProdutos();
 void salvarProdutosVinculadoComEstoque();
-void adicionarItem();
-void removerItem();
+void adicionarItemEstoque();
+void removerItemEstoque();
 void listarItens();
 
 
@@ -114,4 +114,11 @@ void salvarProdutosVinculadoComEstoque() {
                 produtos[i].valorFinal,
                 produtos[i].qtd);
     }
+    fclose(arquivo);
+}
+
+void adicionarItemEstoque() {
+int id, quantidade; // declarando o id e quantidade que do produto em questao...
+printf("Insira o ID do produto: ")
+
 }
