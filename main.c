@@ -92,7 +92,7 @@ void carregarProdutos() {
                  &produtos[totalProdutos].precoUnidade,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
-                printf("Nome: %s\n", produtos[totalProdutos].nomeProduto);
+        printf("Nome: %s\n", produtos[totalProdutos].nomeProduto);
         produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
@@ -107,7 +107,7 @@ void salvarProdutosVinculadoComEstoque() {
     }
 
     for (int i = 0; i <totalProdutos; i++ ) { // aqui sera um laço for pra tipo percorrer todos os structs de produtos e assim escreve-los na nova txt
-    sprintf("ID do produto: %d\n Produto: %s\n Preço por unidade: %.2f\n Desconto aplicado: %.2f\n Valor Final: %.2f",produtos[i].id,
+        sprintf("ID do produto: %d\n Produto: %s\n Preço por unidade: %.2f\n Desconto aplicado: %.2f\n Valor Final: %.2f",produtos[i].id,
                 produtos[i].nomeProduto,
                 produtos[i].precoUnidade,
                 produtos[i].desconto,
@@ -118,7 +118,14 @@ void salvarProdutosVinculadoComEstoque() {
 }
 
 void adicionarItemEstoque() {
-int id, quantidade; // declarando o id e quantidade que do produto em questao...
-printf("Insira o ID do produto: ")
+    boolean idExiste = false;
+    int id, quantidade; // declarando o id e quantidade que do produto em questao...
+    printf("Insira o ID do produto: ");
+    scanf("%d", &id);
+    for (int i = 0; i < totalProdutos; i++) {
+        if (produtos[i].id == ID) {
+            idExiste = true;
+        }
+    }
 
 }
