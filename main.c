@@ -88,7 +88,6 @@ void carregarProdutos() {
                  &produtos[totalProdutos].precoUnidade,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
-                //produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
@@ -139,7 +138,7 @@ void adicionarItemEstoque() {
             printf("Digite a quantidade de estoque do produto: " );
             scanf("%d", &quantidade);
             produtos[i].qtd += quantidade;
-            printf("Estoque atualizado com sucesso!\n Estoque atual do produto: %d", produtos[i].qtd);
+            printf("Estoque atualizado com sucesso!\nEstoque atual do produto: %d", produtos[i].qtd);
             break;
         }
     }
