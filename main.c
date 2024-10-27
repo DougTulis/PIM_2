@@ -87,14 +87,13 @@ void carregarProdutos() {
                  &produtos[totalProdutos].precoUnidade,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
-        printf("ID: %s\n", produtos[totalProdutos].nomeProduto);
-        produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
+                //produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
     /// Teste com arquivo-estoque que eu criei....
     FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r");
-    if (arquivo != NULL) {
+    if (arquivoEstoque != NULL) {
     int idEstoque, idQtd;
         while(fscanf(arquivoEstoque, "ID do produto: %d%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: %d\n", &idEstoque, &idQtd) == 2) { // aqui vai ler o id (primeira linha), vai pular 4 linhas e depois ler o estoque...
             for(int i = 0; i < totalProdutos; i++ ) { // percorrendo o struct global de produtos...
