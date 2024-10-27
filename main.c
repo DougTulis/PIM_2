@@ -146,3 +146,7 @@ void adicionarItemEstoque() {
         printf("Produto com ID %d não encontrado.\n", id);
     }
 }
+
+void removerItemEstoque() {
+
+}
