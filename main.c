@@ -148,5 +148,6 @@ void adicionarItemEstoque() {
 }
 
 void removerItemEstoque() {
-
+FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r"); //aqui eu acesso o arquivo estoque pra poder ler e retirar a qtd desejada.
+while(fscanf() == x); // condicao de leitura
 }
