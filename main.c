@@ -30,6 +30,7 @@ int main() {
     int opcao;
     setlocale(LC_ALL, NULL);
     carregarProdutos();
+    salvarProdutosVinculadoComEstoque();
     do {
         printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
@@ -114,7 +115,7 @@ void salvarProdutosVinculadoComEstoque() {
     }
 
     for (int i = 0; i <totalProdutos; i++ ) { // aqui sera um laço for pra tipo percorrer todos os structs de produtos e assim escreve-los na nova txt
-        fprintf(arquivo, "ID do produto: %d\n Produto: %s\n Preço por unidade: %.2f\n Desconto aplicado: %.2f\n Valor Final: %.2f\n Estoque: %d\n------------------------\n",produtos[i].id,
+        fprintf(arquivo, "ID do produto: %d\nProduto: %s\nPreço por unidade: %.2f\nDesconto aplicado: %.2f\nValor Final: %.2f\nEstoque: %d\n------------------------\n",produtos[i].id,
                 produtos[i].nomeProduto,
                 produtos[i].precoUnidade,
                 produtos[i].desconto,
