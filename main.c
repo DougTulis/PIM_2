@@ -94,7 +94,7 @@ void carregarProdutos() {
     /// Teste com arquivo-estoque que eu criei....
     FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r");
     if (arquivoEstoque != NULL) {
-    int idEstoque, idQtd;
+        int idEstoque, idQtd;
         while(fscanf(arquivoEstoque, "ID do produto: %d%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: %d\n", &idEstoque, &idQtd) == 2) { // aqui vai ler o id (primeira linha), vai pular 4 linhas e depois ler o estoque...
             for(int i = 0; i < totalProdutos; i++ ) { // percorrendo o struct global de produtos...
                 if (idEstoque == produtos[i].id) {
@@ -148,6 +148,11 @@ void adicionarItemEstoque() {
 }
 
 void removerItemEstoque() {
-FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r"); //aqui eu acesso o arquivo estoque pra poder ler e retirar a qtd desejada.
-while(fscanf() == x); // condicao de leitura
+    int qtdEstoque;
+    FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r"); //aqui eu acesso o arquivo estoque pra poder ler e retirar a qtd desejada.
+    while(fscanf("%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: &d", &qtdEstoque); // condicao de leitura
+    if (arquivoEstoque != NULL) { // programação defensiva!
+       printf("Escreva o ID do item que você deseja remover do estoque: ");
+
+    }
 }
