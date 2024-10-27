@@ -100,7 +100,11 @@ void carregarProdutos() {
         exit(1);
     }
     while(fscanf(arquivoEstoque, "ID do produto: %d%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: %d\n", &idEstoque, &idQtd) == 2) { // aqui vai ler o id (primeira linha), vai pular 4 linhas e depois ler o estoque...
+        for(int i = 0; i < totalProdutos; i++ ) { // percorrendo o struct global de produtos...
+            if (idEstoque == produtos[i].id) {
 
+            }
+        }
     }
 
     void salvarProdutosVinculadoComEstoque() {
