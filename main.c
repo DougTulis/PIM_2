@@ -45,7 +45,7 @@ int main() {
             adicionarItemEstoque();
             break;
         case 2:
-            // removerItem(); (em manutenção..)
+            removerItemEstoque();
             break;
         case 3:
             listarItens();
@@ -148,11 +148,21 @@ void adicionarItemEstoque() {
 }
 
 void removerItemEstoque() {
-    int qtdEstoque;
+    int qtdEstoque, idEstoque, qtdRemover;
     FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r"); //aqui eu acesso o arquivo estoque pra poder ler e retirar a qtd desejada.
-    while(fscanf("%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: &d", &qtdEstoque); // condicao de leitura
+    while(fscanf(arquivoEstoque,"%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: &d", &qtdEstoque)); // condicao de leitura
     if (arquivoEstoque != NULL) { // programação defensiva!
-       printf("Escreva o ID do item que você deseja remover do estoque: ");
-
-    }
+        printf("Escreva o ID do item que você deseja remover do estoque: ");
+            scanf("%d", &idEstoque);
+            for (int i = 0; i < totalProdutos; i++) {
+                if (produtos[i].id == idEstoque) {
+                    printf("Produto selecionado: %d\n", produtos[i].nomeProduto);
+                    printf("Selecione a quantidade de itens que você deseja remover: ");
+                    scanf("%d", &qtdRemover);
+                    produtos[i].qtd -= qtdRemover;
+                    salvarProdutosVinculadoComEstoque();
+                }
+            }
+        }
+        fclose(arquivoEstoque);
 }
