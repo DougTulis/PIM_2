@@ -88,10 +88,15 @@ void carregarProdutos() {
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 5) {
         printf("ID: %s\n", produtos[totalProdutos].nomeProduto);
-
+        produtos[totalProdutos].qtd = 0; // aqui vai começar com 0 pq vai ser definido dps;
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
+    /// Teste com arquivo-estoque que eu criei....
+    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r");
+    if (arquivo == NULL) {
+        printf("Arquivo não existe."); // programação defensiva!
+        exit(1);
 }
 
 void salvarProdutosVinculadoComEstoque() {
