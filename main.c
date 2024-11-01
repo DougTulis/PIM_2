@@ -30,7 +30,7 @@ int main() {
     int opcao;
     setlocale(LC_ALL, NULL);
     carregarProdutos();
-        do {
+    do {
         printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
         printf("2. Remover Item\n");
@@ -88,7 +88,7 @@ void carregarProdutos() {
                  &produtos[totalProdutos].qtd,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 6) {
-                 totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
+        totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
     /// Teste com arquivo-estoque que eu criei....
@@ -108,7 +108,7 @@ void carregarProdutos() {
 }
 
 void adicionarItemEstoque() {
-        bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
+    bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
     int id, quantidade; // declarando o id e quantidade que do produto em questao...
     printf("Insira o ID do produto: ");
     scanf("%d", &id);
@@ -134,23 +134,34 @@ void removerItemEstoque() {
     while(fscanf(arquivoEstoque,"%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: &d", &qtdEstoque)); // condicao de leitura
     if (arquivoEstoque != NULL) { // programação defensiva!
         printf("Escreva o ID do item que você deseja remover do estoque: ");
-            scanf("%d", &idEstoque);
-            for (int i = 0; i < totalProdutos; i++) {
-                if (produtos[i].id == idEstoque) {
-                    printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
-                    printf("Selecione a quantidade de itens que você deseja remover: ");
-                    scanf("%d", &qtdRemover);
-                    produtos[i].qtd -= qtdRemover;
-                }
+        scanf("%d", &idEstoque);
+        for (int i = 0; i < totalProdutos; i++) {
+            if (produtos[i].id == idEstoque) {
+                printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
+                printf("Selecione a quantidade de itens que você deseja remover: ");
+                scanf("%d", &qtdRemover);
+                produtos[i].qtd -= qtdRemover;
             }
         }
-        fclose(arquivoEstoque);
+    }
+    fclose(arquivoEstoque);
 }
 
 void salvarProdutos() {
-     FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "w");
+    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "w");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo de produtos para salvar.\n");
         exit(1);
     }
+    for (int i = 0; i < totalProdutos; i++) {
+        fprintf(arquivo, "%d,%s,%d,%.2f,%.2f,%.2f\n",
+                produtos[i].id,
+                produtos[i].nomeProduto,
+                produtos[i].qtd, // salvando direto do arquivo vinicius
+                produtos[i].precoUnidade,
+                produtos[i].desconto,
+                produtos[i].valorFinal);
+    }
+    fclose(arquivo);
 }
+
