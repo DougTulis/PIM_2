@@ -31,5 +31,5 @@ Produto: Verdura
 Preço por unidade: 0.00
 Desconto aplicado: 0.00
 Valor Final: 0.00
-Estoque: 0
+Estoque: 15
 ------------------------

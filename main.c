@@ -30,8 +30,7 @@ int main() {
     int opcao;
     setlocale(LC_ALL, NULL);
     carregarProdutos();
-    salvarProdutosVinculadoComEstoque();
-    do {
+        do {
         printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
         printf("2. Remover Item\n");
@@ -106,28 +105,9 @@ void carregarProdutos() {
         fclose(arquivoEstoque);
     }
 }
-void salvarProdutosVinculadoComEstoque() {
-    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "w"); // PASTA TXT NOVA QUE VOU ESCREVER OS PRODUTOS COM ESTOQUE
-    if (arquivo == NULL) {
-        printf("Arquivo não existe."); // programação defensiva...
-        exit(1);
-    }
-
-    for (int i = 0; i <totalProdutos; i++ ) { // aqui sera um laço for pra tipo percorrer todos os structs de produtos e assim escreve-los na nova txt
-        fprintf(arquivo, "ID do produto: %d\nProduto: %s\nPreço por unidade: %.2f\nDesconto aplicado: %.2f\nValor Final: %.2f\nEstoque: %d\n------------------------\n",produtos[i].id,
-                produtos[i].nomeProduto,
-                produtos[i].precoUnidade,
-                produtos[i].desconto,
-                produtos[i].valorFinal,
-                produtos[i].qtd);
-
-    }
-    fclose(arquivo);
-}
 
 void adicionarItemEstoque() {
-    carregarProdutos();
-    bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
+        bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
     int id, quantidade; // declarando o id e quantidade que do produto em questao...
     printf("Insira o ID do produto: ");
     scanf("%d", &id);
@@ -156,11 +136,10 @@ void removerItemEstoque() {
             scanf("%d", &idEstoque);
             for (int i = 0; i < totalProdutos; i++) {
                 if (produtos[i].id == idEstoque) {
-                    printf("Produto selecionado: %d\n", produtos[i].nomeProduto);
+                    printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
                     printf("Selecione a quantidade de itens que você deseja remover: ");
                     scanf("%d", &qtdRemover);
                     produtos[i].qtd -= qtdRemover;
-                    salvarProdutosVinculadoComEstoque();
                 }
             }
         }
