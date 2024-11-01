@@ -19,7 +19,7 @@ produto produtos[MAX_PRODUTOS];
 int totalProdutos = 0;
 
 void carregarProdutos();
-void salvarProdutosVinculadoComEstoque();
+void salvarProdutos();
 void adicionarItemEstoque();
 void removerItemEstoque();
 void listarItens();
