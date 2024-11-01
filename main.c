@@ -51,6 +51,7 @@ int main() {
             break;
         case 0:
             printf("Saindo do programa...\n");
+            salvarProdutos();
             exit(1);
             break;
         default:
@@ -106,6 +107,7 @@ void adicionarItemEstoque() {
             scanf("%d", &quantidade);
             produtos[i].qtd += quantidade;
             printf("Estoque atualizado com sucesso!\nEstoque atual do produto: %d", produtos[i].qtd);
+            salvarProdutos();
             break;
         }
     }
@@ -129,6 +131,7 @@ void removerItemEstoque() {
                 produtos[i].qtd -= qtdRemover;
             }
         }
+      salvarProdutos();
     }
     fclose(arquivoEstoque);
 }
