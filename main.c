@@ -51,7 +51,7 @@ int main() {
             break;
         case 0:
             printf("Saindo do programa...\n");
-            salvarProdutosVinculadoComEstoque();
+            exit(1);
             break;
         default:
             printf("Opção inválida! Tente novamente.\n");
@@ -85,9 +85,10 @@ void carregarProdutos() {
     while(fscanf(arquivo, "%d,%99[^,],%f,%f,%f", &produtos[totalProdutos].id,
                  produtos[totalProdutos].nomeProduto,
                  &produtos[totalProdutos].precoUnidade,
+                 &produtos[totalProdutos].qtd,
                  &produtos[totalProdutos].desconto,
-                 &produtos[totalProdutos].valorFinal) == 5) {
-        totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
+                 &produtos[totalProdutos].valorFinal) == 6) {
+                 totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
     /// Teste com arquivo-estoque que eu criei....
