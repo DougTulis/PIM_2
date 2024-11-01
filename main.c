@@ -30,7 +30,7 @@ int main() {
     int opcao;
     setlocale(LC_ALL, NULL);
     carregarProdutos();
-        do {
+    do {
         printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
         printf("2. Remover Item\n");
@@ -88,52 +88,37 @@ void carregarProdutos() {
                  &produtos[totalProdutos].qtd,
                  &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 6) {
-                 totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
+        totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
-    /// Teste com arquivo-estoque que eu criei....
-    FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r");
-    if (arquivoEstoque != NULL) {
-        int idEstoque, idQtd;
-        while(fscanf(arquivoEstoque, "ID do produto: %d%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: %d\n", &idEstoque, &idQtd) == 2) { // aqui vai ler o id (primeira linha), vai pular 4 linhas e depois ler o estoque...
-            for(int i = 0; i < totalProdutos; i++ ) { // percorrendo o struct global de produtos...
-                if (idEstoque == produtos[i].id) {
-                    produtos[i].qtd = idQtd; /// se o id for correspondente ao produto ele vai atualizar o estoque dele já declarado da outra função
-                    break;
-                }
+
+    void adicionarItemEstoque() {
+        bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
+        int id, quantidade; // declarando o id e quantidade que do produto em questao...
+        printf("Insira o ID do produto: ");
+        scanf("%d", &id);
+        for (int i = 0; i <totalProdutos; i++) {
+            if (produtos[i].id == id) {
+                idExiste = true;
+                printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
+                printf("Digite a quantidade de estoque do produto: " );
+                scanf("%d", &quantidade);
+                produtos[i].qtd += quantidade;
+                printf("Estoque atualizado com sucesso!\nEstoque atual do produto: %d", produtos[i].qtd);
+                break;
             }
         }
-        fclose(arquivoEstoque);
-    }
-}
-
-void adicionarItemEstoque() {
-        bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
-    int id, quantidade; // declarando o id e quantidade que do produto em questao...
-    printf("Insira o ID do produto: ");
-    scanf("%d", &id);
-    for (int i = 0; i <totalProdutos; i++) {
-        if (produtos[i].id == id) {
-            idExiste = true;
-            printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
-            printf("Digite a quantidade de estoque do produto: " );
-            scanf("%d", &quantidade);
-            produtos[i].qtd += quantidade;
-            printf("Estoque atualizado com sucesso!\nEstoque atual do produto: %d", produtos[i].qtd);
-            break;
+        if (!idExiste) {
+            printf("Produto com ID %d não encontrado.\n", id);
         }
     }
-    if (!idExiste) {
-        printf("Produto com ID %d não encontrado.\n", id);
-    }
-}
 
-void removerItemEstoque() {
-    int qtdEstoque, idEstoque, qtdRemover;
-    FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r"); //aqui eu acesso o arquivo estoque pra poder ler e retirar a qtd desejada.
-    while(fscanf(arquivoEstoque,"%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: &d", &qtdEstoque)); // condicao de leitura
-    if (arquivoEstoque != NULL) { // programação defensiva!
-        printf("Escreva o ID do item que você deseja remover do estoque: ");
+    void removerItemEstoque() {
+        int qtdEstoque, idEstoque, qtdRemover;
+        FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r"); //aqui eu acesso o arquivo estoque pra poder ler e retirar a qtd desejada.
+        while(fscanf(arquivoEstoque,"%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: &d", &qtdEstoque)); // condicao de leitura
+        if (arquivoEstoque != NULL) { // programação defensiva!
+            printf("Escreva o ID do item que você deseja remover do estoque: ");
             scanf("%d", &idEstoque);
             for (int i = 0; i < totalProdutos; i++) {
                 if (produtos[i].id == idEstoque) {
@@ -145,4 +130,13 @@ void removerItemEstoque() {
             }
         }
         fclose(arquivoEstoque);
+    }
+
+    void salvarProdutos() {
+        FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo do vinicius
+        if (arquivo == NULL) {
+            printf("Arquivo não existe."); // programação defensiva...
+            exit(1);
+        }
+    }
 }
