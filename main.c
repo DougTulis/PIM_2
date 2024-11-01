@@ -82,29 +82,15 @@ void carregarProdutos() {
         printf("Arquivo não existe."); // programação defensiva...
         exit(1);
     }
-    while(fscanf(arquivo, "%d,%99[^,],%f,%f,%f", &produtos[totalProdutos].id,
+    while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &produtos[totalProdutos].id,
                  produtos[totalProdutos].nomeProduto,
-                 &produtos[totalProdutos].precoUnidade,
                  &produtos[totalProdutos].qtd,
-                 &produtos[totalProdutos].desconto,
+                 &produtos[totalProdutos].precoUnidade,
+                &produtos[totalProdutos].desconto,
                  &produtos[totalProdutos].valorFinal) == 6) {
         totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
     }
     fclose(arquivo);
-    /// Teste com arquivo-estoque que eu criei....
-    FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r");
-    if (arquivoEstoque != NULL) {
-        int idEstoque, idQtd;
-        while(fscanf(arquivoEstoque, "ID do produto: %d%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: %d\n", &idEstoque, &idQtd) == 2) { // aqui vai ler o id (primeira linha), vai pular 4 linhas e depois ler o estoque...
-            for(int i = 0; i < totalProdutos; i++ ) { // percorrendo o struct global de produtos...
-                if (idEstoque == produtos[i].id) {
-                    produtos[i].qtd = idQtd; /// se o id for correspondente ao produto ele vai atualizar o estoque dele já declarado da outra função
-                    break;
-                }
-            }
-        }
-        fclose(arquivoEstoque);
-    }
 }
 
 void adicionarItemEstoque() {
