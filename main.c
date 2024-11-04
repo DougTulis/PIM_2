@@ -78,9 +78,9 @@ void listarItens() {
 
 void carregarProdutos() {
     totalProdutos = 0; // o total do array precisa começa com 0
-    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo do vinicius
+    FILE *arquivo = fopen("C:\\Users\\dotul\\PIM_2\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo do vinicius
     if (arquivo == NULL) {
-        printf("Arquivo não existe."); // programação defensiva...
+        printf("Arquivo não existe!!!!"); // programação defensiva...
         exit(1);
     }
     while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &produtos[totalProdutos].id,
@@ -117,27 +117,25 @@ void adicionarItemEstoque() {
 }
 
 void removerItemEstoque() {
-    int qtdEstoque, idEstoque, qtdRemover;
-    FILE *arquivoEstoque = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\ProdutoEstoque.txt", "r"); //aqui eu acesso o arquivo estoque pra poder ler e retirar a qtd desejada.
-    while(fscanf(arquivoEstoque,"%*[^\n]\n%*[^\n]\n%*[^\n]\n%*[^\n]\nEstoque: &d", &qtdEstoque)); // condicao de leitura
-    if (arquivoEstoque != NULL) { // programação defensiva!
-        printf("Escreva o ID do item que você deseja remover do estoque: ");
-        scanf("%d", &idEstoque);
-        for (int i = 0; i < totalProdutos; i++) {
-            if (produtos[i].id == idEstoque) {
-                printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
-                printf("Selecione a quantidade de itens que você deseja remover: ");
-                scanf("%d", &qtdRemover);
-                produtos[i].qtd -= qtdRemover;
-            }
+     int idEstoque, qtdRemover;
+    printf("Escreva o ID do item que você deseja remover do estoque: ");
+    scanf("%d", &idEstoque);
+    for (int i = 0; i < totalProdutos; i++) {
+        if (produtos[i].id == idEstoque) {
+            printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
+            printf("Selecione a quantidade de itens que você deseja remover: ");
+            scanf("%d", &qtdRemover);
+            produtos[i].qtd -= qtdRemover;
+            printf("Estoque atualizado com sucesso!\nEstoque atual do produto: %d\n", produtos[i].qtd);
+
+            salvarProdutos(); // Salva o estoque atualizado
+            break;
         }
-      salvarProdutos();
     }
-    fclose(arquivoEstoque);
 }
 
 void salvarProdutos() {
-    FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "w");
+    FILE *arquivo = fopen("C:\\Users\\dotul\\PIM_2\\bin\\Debug\\Produtos.txt", "w");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo de produtos para salvar.\n");
         exit(1);
