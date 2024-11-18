@@ -12,31 +12,21 @@ typedef struct { // Estrutura heterogenea de produtos... (Vinicius)
     char nomeProduto[50];
 } produto;
 
-
-#define MAX_PRODUTOS 999
-produto produtos[MAX_PRODUTOS];
-
-int totalProdutos = 0;
-
-void carregarProdutos();
-void salvarProdutos();
-void adicionarItemEstoque();
-void removerItemEstoque();
-void listarItens();
-
-
-
 int main() {
+
+    #define MAX_PRODUTOS 999
+    produto produtos[MAX_PRODUTOS];
+    int totalProdutos = 0;
     int opcao;
 
-    carregarProdutos();
+     carregarProdutos(produtos, &totalProdutos);
     do {
         printf("\n=== Menu de Estoque===\n"); // submenu do estoque...
         printf("1. Adicionar Item\n");
         printf("2. Remover Item\n");
         printf("3. Listar Itens\n");
         printf("0. Sair\n");
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opï¿½ï¿½o: ");
         scanf("%d", &opcao);
 
         switch(opcao) {
@@ -55,7 +45,7 @@ int main() {
             exit(1);
             break;
         default:
-            printf("Opção inválida! Tente novamente.\n");
+            printf("Opï¿½ï¿½o invï¿½lida! Tente novamente.\n");
         }
     } while (opcao != 0);
 
@@ -68,7 +58,7 @@ void listarItens() {
     for (int i = 0; i < totalProdutos; i++) {
         printf("ID: %d\n", produtos[i].id);
         printf("Nome: %s\n", produtos[i].nomeProduto);
-        printf("Preço Unidade: %.2f\n", produtos[i].precoUnidade);
+        printf("Preï¿½o Unidade: %.2f\n", produtos[i].precoUnidade);
         printf("Desconto: %.2f\n", produtos[i].desconto);
         printf("Valor Final: %.2f\n", produtos[i].valorFinal);
         printf("Estoque: %d unidades\n", produtos[i].qtd);
@@ -76,26 +66,26 @@ void listarItens() {
     }
 }
 
-void carregarProdutos() {
-    totalProdutos = 0; // o total do array precisa começa com 0
+void carregarProdutos(produto produtos[], int *totalProdutos) { //incluindo os pararmetros
+    totalProdutos = 0; // o total do array precisa comeï¿½a com 0
     FILE *arquivo = fopen("E:\\Linguagem_C\\Projeto PIM 2\\Projeto\\bin\\Debug\\Produtos.txt", "r"); // acesso o arquivo do vinicius
     if (arquivo == NULL) {
-        printf("Arquivo não existe!!!!"); // programação defensiva...
+        printf("Arquivo nï¿½o existe!!!!"); // programaï¿½ï¿½o defensiva...
         exit(1);
     }
-    while(fscanf(arquivo, "%d,%99[^,],%d,%f,%f,%f", &produtos[totalProdutos].id,
-                 produtos[totalProdutos].nomeProduto,
-                 &produtos[totalProdutos].qtd,
-                 &produtos[totalProdutos].precoUnidade,
-                &produtos[totalProdutos].desconto,
-                 &produtos[totalProdutos].valorFinal) == 6) {
-        totalProdutos = totalProdutos + 1; // contador de produtos, e vai percorrer o array de produtos, assim ne precisa de for..
+     while (fscanf(arquivo, "%d,%49[^,],%d,%f,%f,%f", &produtos[*totalProdutos].id,
+                  produtos[*totalProdutos].nomeProduto,
+                  &produtos[*totalProdutos].qtd,
+                  &produtos[*totalProdutos].precoUnidade,
+                  &produtos[*totalProdutos].desconto,
+                  &produtos[*totalProdutos].valorFinal) == 6) {
+        (*totalProdutos)++; // pegando o ponteiro e apontando de forma em que haja o incremento, percorrendo todo o array struct
     }
     fclose(arquivo);
 }
 
 void adicionarItemEstoque() {
-    bool idExiste = false; // boolean pra controlar o laço se o id existir no array struct.
+    bool idExiste = false; // boolean pra controlar o laï¿½o se o id existir no array struct.
     int id, quantidade; // declarando o id e quantidade que do produto em questao...
     printf("Insira o ID do produto: ");
     scanf("%d", &id);
@@ -112,7 +102,7 @@ void adicionarItemEstoque() {
         }
     }
     if (!idExiste) {
-        printf("Produto com ID %d não encontrado.\n", id);
+        printf("Produto com ID %d nï¿½o encontrado.\n", id);
     }
 }
 
@@ -120,14 +110,14 @@ void removerItemEstoque() {
     int idEstoque, qtdRemover;
     bool idExiste = false;
 
-    printf("Escreva o ID do item que você deseja remover do estoque: ");
+    printf("Escreva o ID do item que vocï¿½ deseja remover do estoque: ");
     scanf("%d", &idEstoque);
 
     for (int i = 0; i < totalProdutos; i++) {
         if (produtos[i].id == idEstoque) {
             idExiste = true;
             printf("Produto selecionado: %s\n", produtos[i].nomeProduto);
-            printf("Selecione a quantidade de itens que você deseja remover: ");
+            printf("Selecione a quantidade de itens que vocï¿½ deseja remover: ");
             scanf("%d", &qtdRemover);
 
             if (produtos[i].qtd >= qtdRemover) {
@@ -143,7 +133,7 @@ void removerItemEstoque() {
     }
 
     if (!idExiste) {
-        printf("Produto com ID %d não encontrado.\n", idEstoque);
+        printf("Produto com ID %d nï¿½o encontrado.\n", idEstoque);
     }
 }
 
@@ -165,4 +155,3 @@ void salvarProdutos() {
     }
     fclose(arquivo);
 }
-
